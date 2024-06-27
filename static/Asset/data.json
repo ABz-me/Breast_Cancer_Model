@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Dr. Susan Love",
+        "image": "static/Asset/drSusanLove.jpg",
+        "quote": "The goal is to live a full, productive life even with all that ambiguity. No matter what happens, you can find a way to live a life with grace.",
+        "description": "Dr. Susan Love is a prominent breast cancer surgeon, researcher, and advocate. She is the founder and chief visionary officer of the Dr. Susan Love Research Foundation, which focuses on breast cancer research, education, and advocacy. Her work has been pivotal in improving breast cancer treatment and awareness."
+    },
+    {
+        "name": "Dr. Siddhartha Mukherjee",
+        "image": "static/Asset/drSiddharthaMukherjee.avif",
+        "quote": "It's easy to make perfect decisions with perfect information. Medicine asks you to make perfect decisions with imperfect information.",
+        "description": "Dr. Siddhartha Mukherjee is an oncologist, researcher, and Pulitzer Prize-winning author of \"The Emperor of All Maladies: A Biography of Cancer.\" His work and writings have greatly contributed to the understanding of cancer's history, treatment, and future research directions."
+    },
+    {
+        "name": "Dr. Denis Mukwege",
+        "image": "static/Asset/drDenisMukwege.webp",
+        "quote": "For me, each woman saved from violence is a victory against the culture of destruction.",
+        "description": "Dr. Denis Mukwege is a renowned gynecologist and Nobel Peace Prize laureate known for his work in treating women who have been subjected to sexual violence in the Democratic Republic of Congo. He has also contributed significantly to women's health and cancer treatment, particularly in regions with limited medical resources."
+      },
+      {
+        "name": "Dr. Harold Varmus",
+        "image": "static/Asset/drHaroldVarmus.jpg",
+        "quote": "The work on the cancer genome is the beginning of the end of cancer.",
+        "description": "Dr. Harold Varmus is a Nobel Prize-winning scientist and former director of the National Cancer Institute. He has made groundbreaking contributions to the understanding of cancer genetics and the molecular mechanisms of cancer. His leadership in cancer research has paved the way for numerous advancements in cancer treatment and prevention."
+      },
+      {
+        "name": "Dr. Mary-Claire King",
+        "image": "static/Asset/drMaryClaireKing.jpg",
+        "quote": "There cannot be a crisis next week. My schedule is already full.",
+        "description": "Dr. Mary-Claire King is a geneticist known for her discovery of the BRCA1 gene, which is linked to hereditary breast and ovarian cancer. Her pioneering research has had a profound impact on genetic testing, cancer prevention, and personalized medicine."
+      }
+]

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Data Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        const articleWhat = document.getElementById('presentation');
+        if (!articleWhat) {
+            console.error('Error: Cannot find the article section in the DOM.');
+            return;
+        }
+        
+        fetch('/presentation')  
+            .then(response => response.json())
+            .then(data => {
+                data.sections.forEach(article => {  
+                    const articleData = document.createElement('div');
+
+                    const articleTitle = document.createElement('h2');
+                    articleTitle.textContent = article.title;
+
+                    const articleImage = document.createElement('img');
+                    articleImage.src = article.image;
+                    articleImage.alt = article.title;
+
+                    const articleContent = document.createElement('p');
+                    articleContent.innerHTML = article.content;
+
+                    articleData.appendChild(articleTitle);
+                    articleData.appendChild(articleImage);
+                    articleData.appendChild(articleContent);
+
+                    articleWhat.appendChild(articleData);
+                });
+            })
+            .catch(error => console.error('Error fetching the data:', error));
+    });
+</script>
+
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/index">
+        <img src="{{ url_for('static', filename='Asset/cancerLogo.svg')}}" alt="Cancer Logo">
+    </a>
+        <h1>EarlyDetect</h1>
+    </nav>
+    <div class="content">
+    <h1 id="band">Fill this form</h1>
+
+    <form action="/predict" method="POST">
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input type="text" id="id" name="id" placeholder="Enter your name" class="nameInput">
+        </div>
+        <div class="form-group">
+            <label for="value1">Radius Mean<span class="requiredField">*</span></label>
+            <input type="number" id="value1" name="value1" step="any" min="0" max="100" placeholder="e.g., 10-20" required>
+            <span class="unit">mm</span>
+        </div>
+        <div class="form-group">
+            <label for="value2">Texture Mean<span class="requiredField">*</span></label>
+            <input type="number" id="value2" name="value2" step="any" min="0" max="100" placeholder="e.g., 10-30" required>
+        </div>
+        <div class="form-group">
+            <label for="value3">Perimeter Mean<span class="requiredField">*</span></label>
+            <input type="number" id="value3" name="value3" step="any" min="0" max="1000" placeholder="e.g., 50-150" required>
+            <span class="unit">mm</span>
+        </div>
+        <div class="form-group">
+            <label for="value4">Area Mean<span class="requiredField">*</span></label>
+            <input type="number" id="value4" name="value4" step="any" min="0" max="10000" placeholder="e.g., 100-1000" required>
+            <span class="unit">mm²</span>
+        </div>
+        <div class="form-group">
+            <label for="value5">Smoothness Mean<span class="requiredField">*</span></label>
+            <input type="number" id="value5" name="value5" step="any" min="0" max="1" placeholder="e.g., 0.05-0.1" required>
+        </div>
+        <div class="form-group">
+            <label for="value6">Compactness Mean<span class="requiredField">*</span></label>
+            <input type="number" id="value6" name="value6" step="any" min="0" max="1" placeholder="e.g., 0.1-0.5" required>
+        </div>
+        <div class="form-group">
+            <label for="value7">Concavity Mean<span class="requiredField">*</span></label>
+            <input type="number" id="value7" name="value7" step="any" min="0" max="1" placeholder="e.g., 0.05-0.3" required>
+        </div>
+        <div class="form-group">
+            <label for="value8">Concave Points Mean<span class="requiredField">*</span></label>
+            <input type="number" id="value8" name="value8" step="any" min="0" max="1" placeholder="e.g., 0.01-0.2" required>
+        </div>
+        <div class="form-group">
+            <label for="value9">Symmetry Mean<span class="requiredField">*</span></label>
+            <input type="number" id="value9" name="value9" step="any" min="0" max="1" placeholder="e.g., 0.1-0.8" required>
+        </div>
+        <div class="form-group">
+            <label for="value10">Fractal Dimension Mean<span class="requiredField">*</span></label>
+            <input type="number" id="value10" name="value10" step="any" min="0" max="1" placeholder="e.g., 0.01-0.1" required>
+        </div>
+        <div class="form-group">
+            <label for="value11">Radius SE<span class="requiredField">*</span></label>
+            <input type="number" id="value11" name="value11" step="any" min="0" max="10" placeholder="e.g., 0-5" required>
+            <span class="unit">mm</span>
+        </div>
+        <div class="form-group">
+            <label for="value12">Texture SE<span class="requiredField">*</span></label>
+            <input type="number" id="value12" name="value12" step="any" min="0" max="10" placeholder="e.g., 0-8" required>
+        </div>
+        <div class="form-group">
+            <label for="value13">Perimeter SE<span class="requiredField">*</span></label>
+            <input type="number" id="value13" name="value13" step="any" min="0" max="100" placeholder="e.g., 5-50" required>
+            <span class="unit">mm</span>
+        </div>
+        <div class="form-group">
+            <label for="value14">Area SE<span class="requiredField">*</span></label>
+            <input type="number" id="value14" name="value14" step="any" min="0" max="1000" placeholder="e.g., 20-200" required>
+            <span class="unit">mm²</span>
+        </div>
+        <div class="form-group">
+            <label for="value15">Smoothness SE<span class="requiredField">*</span></label>
+            <input type="number" id="value15" name="value15" step="any" min="0" max="0.1" placeholder="e.g., 0.01-0.05" required>
+        </div>
+        <div class="form-group">
+            <label for="value16">Compactness SE<span class="requiredField">*</span></label>
+            <input type="number" id="value16" name="value16" step="any" min="0" max="0.1" placeholder="e.g., 0.02-0.08" required>
+        </div>
+        <div class="form-group">
+            <label for="value17">Concavity SE<span class="requiredField">*</span></label>
+            <input type="number" id="value17" name="value17" step="any" min="0" max="0.1" placeholder="e.g., 0.01-0.1" required>
+        </div>
+        <div class="form-group">
+            <label for="value18">Concave Points SE<span class="requiredField">*</span></label>
+            <input type="number" id="value18" name="value18" step="any" min="0" max="0.1" placeholder="e.g., 0.005-0.03" required>
+        </div>
+        <div class="form-group">
+            <label for="value19">Symmetry SE<span class="requiredField">*</span></label>
+            <input type="number" id="value19" name="value19" step="any" min="0" max="1" placeholder="e.g., 0.1-0.8" required>
+        </div>
+        <div class="form-group">
+            <label for="value20">Fractal Dimension SE<span class="requiredField">*</span></label>
+            <input type="number" id="value20" name="value20" step="any" min="0" max="0.1" placeholder="e.g., 0.01-0.05" required>
+        </div>
+        <div class="form-group">
+            <label for="value21">Radius Worst<span class="requiredField">*</span></label>
+            <input type="number" id="value21" name="value21" step="any" min="0" max="200" placeholder="e.g., 20-150" required>
+            <span class="unit">mm</span>
+        </div>
+        <div class="form-group">
+            <label for="value22">Texture Worst<span class="requiredField">*</span></label>
+            <input type="number" id="value22" name="value22" step="any" min="0" max="200" placeholder="e.g., 30-120" required>
+        </div>
+        <div class="form-group">
+            <label for="value23">Perimeter Worst<span class="requiredField">*</span></label>
+            <input type="number" id="value23" name="value23" step="any" min="0" max="2500" placeholder="e.g., 100-600" required>
+            <span class="unit">mm</span>
+        </div>
+        <div class="form-group">
+            <label for="value24">Area Worst<span class="requiredField">*</span></label>
+            <input type="number" id="value24" name="value24" step="any" min="0" max="25000" placeholder="e.g., 500-5000" required>
+            <span class="unit">mm²</span>
+        </div>
+        <div class="form-group">
+            <label for="value25">Smoothness Worst<span class="requiredField">*</span></label>
+            <input type="number" id="value25" name="value25" step="any" min="0" max="1" placeholder="e.g., 0.05-0.2" required>
+        </div>
+        <div class="form-group">
+            <label for="value26">Compactness Worst<span class="requiredField">*</span></label>
+            <input type="number" id="value26" name="value26" step="any" min="0" max="1" placeholder="e.g., 0.1-0.5" required>
+        </div>
+        <div class="form-group">
+            <label for="value27">Concavity Worst<span class="requiredField">*</span></label>
+            <input type="number" id="value27" name="value27" step="any" min="0" max="1" placeholder="e.g., 0.05-0.4" required>
+        </div>
+        <div class="form-group">
+            <label for="value28">Concave Points Worst<span class="requiredField">*</span></label>
+            <input type="number" id="value28" name="value28" step="any" min="0" max="1" placeholder="e.g., 0.01-0.3" required>
+        </div>
+        <div class="form-group">
+            <label for="value29">Symmetry Worst<span class="requiredField">*</span></label>
+            <input type="number" id="value29" name="value29" step="any" min="0" max="1" placeholder="e.g., 0.1-0.8" required>
+        </div>
+        <div class="form-group">
+            <label for="value30">Fractal Dimension Worst <span class="requiredField">*</span></label>
+            <input type="number" id="value30" name="value30" step="any" min="0" max="0.1" placeholder="e.g., 0.01-0.05" required>
+        </div>
+        
+        <button id="submit" type="submit" name="Submit Request">Submit</button>
+    </form>
+
+    <div class="presentation" id="presentation">
+    </div>
+
+</div>
+<footer>
+    <div class="links">
+        <a href="https://github.com/ABz-me">GitHub</a>
+        <a href="https://www.linkedin.com/in/arkaprava-bhattacharya/">LinkedIn</a>
+        <a href="copyright.txt">&copy; Copyright Contents</a>        
+    </div>
+    <img src="{{ url_for('static', filename='Asset/cancerLogo.svg')}}" alt="Cancer Logo">
+    <div class="conclusion">
+        <span>In our pursuit of creating a healthier, cancer-free life.</span>
+        <span>This website presents an experimental project by Arkaprava Bhattacharya. Some images used on this site are protected by copyright, with all credits duly attributed to their respective owners.</span>
+        <span class="readMore">Read More...</span>
+    </div>
+</footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</html>

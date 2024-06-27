@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>EarlyDetect | Prediction</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+  
+</head>
+<body>
+  <nav class="navbar">
+    <img src="{{ url_for('static', filename='Asset/cancerLogo.svg')}}" alt="Cancer Logo">
+    <h1>EarlyDetect</h1>
+</nav>
+
+
+  <div class="container">
+    
+
+    <div class="jumbotron">
+      <h1>Cancer is Predicted to be {{ output }} for <span id="data">{{data_name}}</span></h1>      
+      <p>The Probability of {{ output }} is <span id="data">{{ accuracy * 100 }}%</span>.</p>
+      <p>The time taken to predict is {{ time }}s.</p>
+    </div>
+
+ 
+
+
+    <footer>
+      <div class="links">
+          <a href="https://github.com/ABz-me">GitHub</a>
+          <a href="https://www.linkedin.com/in/arkaprava-bhattacharya/">LinkedIn</a>
+          <a href="copyright.txt">&copy; Copyright Contents</a>        
+      </div>
+      <img src="{{ url_for('static', filename='Asset/cancerLogo.svg')}}" alt="Cancer Logo">
+      <div class="conclusion">
+          <span>In our pursuit of creating a healthier, cancer-free life.</span>
+          <span>This website presents an experimental project by Arkaprava Bhattacharya. Some images used on this site are protected by copyright, with all credits duly attributed to their respective owners.</span>
+          <span class="readMore">Read More...</span>
+        </div>
+      </footer>
+  </div> 
+</body>
+</html>

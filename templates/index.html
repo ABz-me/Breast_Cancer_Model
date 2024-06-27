@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='javascript/script.js') }}" defer></script>
+    <title>EarlyDetect</title>
+    <meta name="description" content="EarlyDetect - Early Insights for Better Cancer Outcomes">
+</head>
+<body>
+
+
+    <nav class="navbar">
+        <img src="{{ url_for('static', filename='Asset/cancerLogo.svg')}}" alt="Cancer Logo">
+        <h1>EarlyDetect</h1>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="hero">
+                <div class="backgroundImage">
+                    <img src="{{ url_for('static', filename='Asset/BackgroundImage.webp')}}" alt="Background Image">
+                </div>
+                <div class="overlay"></div>
+                <div class="content">
+                    <h1>Early Insights, Better Outcomes</h1>
+                    <blockquote>
+                        Advancing Towards a Cancer-Free Future
+                    </blockquote>
+                    <a href="/form">
+                        <button type="button" class="analyze">
+                            ANALYZE NOW
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <section id="article-section"></section>
+            <section id="whatSection"></section>
+        </div>
+    </main>
+    <footer>
+        <div class="links">
+            <a href="https://github.com/ABz-me">GitHub</a>
+            <a href="https://www.linkedin.com/in/arkaprava-bhattacharya/">LinkedIn</a>
+            <a href="copyright.txt">&copy; Copyright Contents</a>        
+        </div>
+        <img src="{{ url_for('static', filename='Asset/cancerLogo.svg')}}" alt="Cancer Logo">
+        <div class="conclusion">
+            <span>In our pursuit of creating a healthier, cancer-free life.</span>
+            <span>This website presents an experimental project by Arkaprava Bhattacharya. Some images used on this site are protected by copyright, with all credits duly attributed to their respective owners.</span>
+            <span class="readMore">Read More...</span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,19 @@
+.container{
+    height: 90vh;
+}
+
+#data{
+    color: red;
+}
+#data:last-child{
+    font-weight: 600;
+}
+footer{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* position: relative; */
+    position: absolute;
+    bottom: 0;
+
+}
